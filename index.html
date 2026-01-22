@@ -989,6 +989,13 @@
             constructor() {
                 this.versions = [];
             }
+
+            initStoreVersion(store) {}
+            getApprovalStatus(storeId) { return 'none'; }
+            getButtonColor(status) { return '#6B7280'; }
+            getStatusIcon(status) { return '○'; }
+            setRole(role, roleName, subdivision, storeId) {}
+            getStoreVersion(storeId) { return null; }
         }
     </script>
 
