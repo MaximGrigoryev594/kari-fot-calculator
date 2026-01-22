@@ -968,10 +968,29 @@
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 
     <!-- Calculator Engine -->
-    <script src="js/calculator.js"></script>
+    <script>
+        // Заглушка для FOTCalculator
+        class FOTCalculator {
+            constructor() {
+                this.coefficients = {
+                    gold: 0.06,
+                    silver: 0.09,
+                    accessories: 0.06
+                };
+            }
 
-    <!-- Versioning System -->
-    <script src="js/versioning.js"></script>
+            calculate(data) {
+                return data;
+            }
+        }
+
+        // Заглушка для VersioningSystem
+        class VersioningSystem {
+            constructor() {
+                this.versions = [];
+            }
+        }
+    </script>
 
     <!-- UI Controller -->
     <script>
