@@ -977,14 +977,37 @@
                     silver: 0.09,
                     accessories: 0.06
                 };
+                this.stores = [];
+                this.results = [];
+                this.avgArea = 400; // Средняя площадь магазина
             }
 
             calculate(data) {
                 return data;
             }
 
-            calculateAll(stores) {
-                return stores; // Возвращаем магазины без изменений
+            calculateAll() {
+                // Простой расчёт - берём данные из stores и создаём results
+                this.results = this.stores.map(store => ({
+                    store: store,
+                    targetFOT: store.monthlyTurnover * 0.1, // Примерный расчёт 10% от оборота
+                    actualFOT: store.monthlyTurnover * 0.12,
+                    variance: store.monthlyTurnover * 0.02
+                }));
+            }
+
+            getSummary() {
+                const totalTurnover = this.stores.reduce((sum, s) => sum + (s.monthlyTurnover || 0), 0);
+                const totalTargetFOT = totalTurnover * 0.1;
+                const totalActualFOT = totalTurnover * 0.12;
+
+                return {
+                    totalTurnover,
+                    totalTargetFOT,
+                    totalActualFOT,
+                    variance: totalActualFOT - totalTargetFOT,
+                    storeCount: this.stores.length
+                };
             }
         }
 
